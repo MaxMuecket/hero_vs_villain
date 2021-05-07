@@ -1,6 +1,37 @@
 import './style.css';
+import { createElement } from './utils/elements';
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`;
+const headerElement = createElement('header', {
+  className: 'header',
+  children: [
+    createElement('h1', {
+      className: 'header__title',
+      innerText: 'Hero vs Villain',
+    }),
+  ],
+});
+
+const mainElement = createElement('main', {
+  className: 'main',
+  children: [
+    createElement('button', {
+      className: 'main__button',
+      innerText: 'vs',
+    }),
+  ],
+});
+
+const footerElement = createElement('footer', {
+  className: 'footer',
+  children: [
+    createElement('a', {
+      href: 'https://developer.marvel.com/',
+      innerText: '☞',
+      target: '_blank',
+    }),
+  ],
+});
+
+document
+  .querySelector('#app')
+  .append(headerElement, mainElement, footerElement);
