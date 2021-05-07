@@ -17,6 +17,7 @@ const mainElement = createElement('main', {
     createElement('button', {
       className: 'main__button',
       innerText: 'vs',
+      autofocus: false,
     }),
   ],
 });
