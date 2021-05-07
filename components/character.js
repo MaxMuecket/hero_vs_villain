@@ -1,17 +1,15 @@
 import './character.css';
-import { createElement } from '../utils/element';
+import { createElement } from '../utils/elements';
 
-export function createCharacterElement({ thumbnail }) {
+export function createCharacterElement({ name, thumbnail }) {
   return createElement('div', {
     className: 'characterCard',
     children: [
       createElement('img', {
         className: 'characterCard__image',
-        src: thumbnail,
+        src: `${thumbnail.path}/portrait_xlarge.${thumbnail.extension}`,
       }),
-      createElement('article', {
-        className: 'characterCard__info',
-      }),
+      createElement('h1', { innerText: name }),
     ],
   });
 }

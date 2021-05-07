@@ -46,7 +46,7 @@ body {
 }
 
 .main {
-  background-color: var(--main-color);
+  background-color: var(--primary-color);
   padding: 5em;
 }
 

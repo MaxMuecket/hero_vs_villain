@@ -1,5 +1,17 @@
+import { createCharacterElement } from './components/character';
 import './style.css';
-import { createElement } from './utils/elements';
+import { createElement, removeAllChildren } from './utils/elements';
+import { getCharacters } from './utils/api';
+import { debounce } from './utils/timer';
+
+// getCharacters('').then((characters) => {
+//   const characterElements = characters.map(createCharacterElement);
+//   characterSection.append(...characterElements);
+// });
+
+const characterSection = createElement('section', {
+  className: 'results',
+});
 
 const headerElement = createElement('header', {
   className: 'header',
@@ -14,11 +26,21 @@ const headerElement = createElement('header', {
 const mainElement = createElement('main', {
   className: 'main',
   children: [
-    createElement('button', {
+    createElement('input', {
       className: 'main__button',
-      innerText: 'vs',
+      placeholder: 'vs',
       autofocus: false,
+      oninput: debounce((event) => {
+        removeAllChildren(characterSection);
+
+        const search = event.target.value;
+        getCharacters(search).then((characters) => {
+          const characterElements = characters.map(createCharacterElement);
+          characterSection.append(...characterElements);
+        });
+      }, 300),
     }),
+    characterSection,
   ],
 });
 
