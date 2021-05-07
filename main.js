@@ -27,8 +27,13 @@ const footerElement = createElement('footer', {
   children: [
     createElement('a', {
       href: 'https://developer.marvel.com/',
-      innerText: '☞',
+      // innerText: '☞',
       target: '_blank',
+      children: [
+        createElement('img', {
+          src: 'assets/iron-man.png',
+        }),
+      ],
     }),
   ],
 });
