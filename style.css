@@ -38,40 +38,84 @@ body {
 
 .header {
   background-color: var(--primary-color);
+  margin-bottom: 5em;
 }
 
 .header__title {
   color: var(--primary-text-color);
   font-weight: 400;
+  text-transform: uppercase;
+  animation-duration: 3s;
+  animation-name: title;
+}
+
+@keyframes title {
+  0% {
+    color: black;
+    margin-bottom: -40px;
+  }
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: -40px;
+  }
+  85% {
+    letter-spacing: 8px;
+    margin-bottom: -40px;
+  }
 }
 
 .main {
-  background-color: var(--main-color);
-  padding: 5em;
+  background-color: var(--primary-color);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2em;
 }
 
 .main__button {
+  background-color: transparent;
+  border: 2px solid;
+  border-radius: 0.6em;
+  align-self: center;
+  justify-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-color: var(--secondary-color);
   color: var(--secondary-text-color);
-  background-color: var(--main-color);
+  box-shadow: 0 0 40px 40px var(--secondary-color) inset,
+    0 0 0 0 var(--secondary-color);
+  transition: all 150ms ease-in-out;
   width: 3em;
-  height: 2em;
-  font-size: 1em;
+  height: 3em;
+}
+
+.main__button:hover {
+  box-shadow: 0 0 10px 0 var(--secondary-color) inset,
+    0 0 10px 4px var(--secondary-color);
+}
+
+.main__resultsHero {
+  background-color: var(--secondary-text-color);
+  border-radius: 1em;
+  width: 150px;
+  justify-self: center;
+  box-shadow: 1em 1em 1em;
+}
+
+.main__resultsVillain {
+  background-color: var(--secondary-text-color);
+  border-radius: 1em;
+  width: 150px;
+  justify-self: center;
+  box-shadow: -1em 1em 1em;
 }
 
 .footer {
   background-color: var(--primary-color);
 }
 
-.footer a {
-  text-decoration: none;
-  color: var(--secondary-text-color);
-}
-
 .footer img {
-  margin-top: 3em;
-  height: 6em;
-}
-
-.footer img:hover {
-  fill: #e62429;
+  margin-top: 8em;
+  height: 3.5em;
 }
