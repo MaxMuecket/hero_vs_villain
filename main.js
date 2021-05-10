@@ -3,14 +3,14 @@ import './style.css';
 import { createElement, removeAllChildren } from './utils/elements';
 import { getCharacters } from './utils/api';
 import { debounce } from './utils/timer';
+import { getRandomCharacterId } from './utils/randomGenerator';
 
-// getCharacters('').then((characters) => {
-//   const characterElements = characters.map(createCharacterElement);
-//   characterSection.append(...characterElements);
-// });
+const characterSectionHero = createElement('section', {
+  className: 'main__resultsHero',
+});
 
-const characterSection = createElement('section', {
-  className: 'results',
+const characterSectionVillain = createElement('section', {
+  className: 'main__resultsVillain',
 });
 
 const headerElement = createElement('header', {
@@ -26,21 +26,32 @@ const headerElement = createElement('header', {
 const mainElement = createElement('main', {
   className: 'main',
   children: [
-    createElement('input', {
+    characterSectionHero,
+    createElement('button', {
       className: 'main__button',
-      placeholder: 'vs',
+      innerText: 'vs',
       autofocus: false,
-      oninput: debounce((event) => {
-        removeAllChildren(characterSection);
+      onclick: debounce(() => {
+        removeAllChildren(characterSectionHero);
 
-        const search = event.target.value;
-        getCharacters(search).then((characters) => {
+        const heroClick = getRandomCharacterId(1011146, 1011226);
+
+        getCharacters(heroClick).then((characters) => {
           const characterElements = characters.map(createCharacterElement);
-          characterSection.append(...characterElements);
+          characterSectionHero.append(...characterElements);
+        });
+
+        removeAllChildren(characterSectionVillain);
+
+        const villainClick = getRandomCharacterId(1011001, 1011081);
+
+        getCharacters(villainClick).then((characters) => {
+          const characterElements = characters.map(createCharacterElement);
+          characterSectionVillain.append(...characterElements);
         });
       }, 300),
     }),
-    characterSection,
+    characterSectionVillain,
   ],
 });
 
@@ -49,7 +60,6 @@ const footerElement = createElement('footer', {
   children: [
     createElement('a', {
       href: 'https://developer.marvel.com/',
-      // innerText: '☞',
       target: '_blank',
       children: [
         createElement('img', {
@@ -59,6 +69,9 @@ const footerElement = createElement('footer', {
     }),
   ],
 });
+
+const characterId = getRandomCharacterId();
+console.log(characterId);
 
 document
   .querySelector('#app')

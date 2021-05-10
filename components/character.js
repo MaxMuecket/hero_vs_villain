@@ -9,7 +9,10 @@ export function createCharacterElement({ name, thumbnail }) {
         className: 'characterCard__image',
         src: `${thumbnail.path}/portrait_xlarge.${thumbnail.extension}`,
       }),
-      createElement('h1', { innerText: name }),
+      createElement('h1', {
+        className: 'characterCard__info',
+        innerText: name,
+      }),
     ],
   });
 }

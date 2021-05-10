@@ -3,3 +3,24 @@
 *::before {
   box-sizing: border-box;
 }
+
+:root {
+  --main-color: #fff;
+  --primary-color: #202020;
+  --secondary-color: #e62429;
+  --primary-text-color: #fff;
+  --secondary-text-color: #b69c6a;
+}
+
+.characterCart {
+  background-color: var(--secondary-text-color);
+}
+
+.characterCard__image {
+  border-top-right-radius: 1em;
+  border-top-left-radius: 1em;
+}
+
+.characterCard__info {
+  font-size: 1em;
+}
